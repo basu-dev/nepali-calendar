@@ -19,7 +19,7 @@ WindowT::WindowT(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refG
     // Widgets
     m_builder->get_widget("compact", m_compact);
     m_builder->get_widget("complete", m_complete);
-    m_complete->hide();
+    m_compact->hide();
 
     // Set up the top-level window.
     add_events(Gdk::BUTTON_PRESS_MASK);
@@ -161,12 +161,14 @@ bool WindowT::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
 
 bool WindowT::on_window_clicked(GdkEventButton* event) {
     if (m_completeShow){
-        m_complete->hide();
-        m_compact->show();
-        m_completeShow = false;
-    } else {
+
         m_compact->hide();
         m_complete->show();
+        m_completeShow = false;
+
+    } else {
+        m_complete->hide();
+        m_compact->show();
         m_completeShow = true;
     }
 
