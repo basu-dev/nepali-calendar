@@ -149,7 +149,7 @@ void WindowT::on_screen_changed(const Glib::RefPtr<Gdk::Screen>& previous_screen
 bool WindowT::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
     cr->save();
     if (m_supportsAlpha)
-        cr->set_source_rgba(0.0, 0.0, 0.0, 0.2);    // transparent
+        cr->set_source_rgba(0.0, 0.0, 0.0, 0.8);    // transparent
     else
         cr->set_source_rgb(0.5, 1.0, 0.3);          // opaque
     cr->set_operator(Cairo::OPERATOR_SOURCE);
@@ -169,6 +169,7 @@ bool WindowT::on_window_clicked(GdkEventButton* event) {
         m_complete->show();
         m_completeShow = true;
     }
+
     return false;
 }
 
